@@ -35,6 +35,13 @@ struct value
   value& operator =(std::string v)
   { type = "string"; data = v; return *this; }
 
+  bool operator ==(value const& v)
+  { return v.name == name && v.type == type && v.data == data; }
+
+  bool operator !=(value const& v) { return !operator ==(v); }
+
+  bool operator !() { return name == "" && type == "" && data == ""; }
+
   private:
   friend struct message;
   friend class storage;
@@ -113,6 +120,16 @@ class storage
       current = next; }
 
     return current->val; }
+
+  value& operator ()(path p)
+  { item* current = &root;
+    for (std::string node : p.nodes)
+    { item* next = nullptr;
+      for (item& child : current->childs)
+      { if (child.val.name == node) { next = &child; break; } }
+      if (!next) { empty = value(); return empty; }
+      current = next; }
+    return current->val; }
   
   bool chk(path p)
   { item* current = &root;
@@ -162,7 +179,6 @@ class storage
 
   storage& parse(std::string in)
   { root.childs.clear(); root.val = value(); path cp;
-    bool root_skip = true;
     bool next = false;
     bool esc = false; std::string curstr; value curval;
     for (char c : in)
@@ -171,9 +187,10 @@ class storage
 
       else if (c == '(') { curstr.clear(); }
       else if (c == ')') { curval = value(); curval.name = curstr;
-                           if (next || cp.nodes.size() == 0)
-                           { next = false; cp.nodes.push_back(curstr); }
-                           else { cp.nodes.back() = curstr; }
+                           if (next) { next = false;
+                                       cp.nodes.push_back(curstr); }
+                           else      { if (cp.nodes.size())
+                                       { cp.nodes.back() = curstr; } }
                            curstr.clear();
                            operator[](cp) = curval; }
 
@@ -222,6 +239,7 @@ class storage
     str.append("\n"); }
 
   item root;
+  value empty;
 };
 
 } // independency
