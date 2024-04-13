@@ -7,7 +7,7 @@
 namespace independency {
 struct value
 { value() {}
-  
+ 
   value(std::string name, int v)
   : name(name), type("int"), data(std::to_string(v)) {}
   
@@ -82,6 +82,12 @@ class bus
   { nodes.remove_if([&cb](callback& i)
                     { return i.func == cb.func && i.ctx == cb.ctx; });
     return *this; }
+
+  bus& operator +(void (*func)(void* ctx, message mess))
+  { return operator +(callback(func, nullptr)); }
+
+  bus& operator -(void (*func)(void* ctx, message mess))
+  { return operator -(callback(func, nullptr)); }
   
   bus& operator ()(message mess)
   { for (callback& node : nodes) { node(mess); } return *this; }

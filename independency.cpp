@@ -7,7 +7,7 @@
 #define IP independency::path
 #define root IP()
 
-void callback(void* ctx, IM mess)
+void handler(void* ctx, IM mess)
 { std::printf("%p, %s: x %d, y %d\n",
               ctx, (~mess).c_str(), (int)mess["x"], (int)mess["y"]); }
 
@@ -24,6 +24,7 @@ int main(int argc, char** argv)
   float _v2 = v2;
   std::string _v3 = v3;
   std::printf("%d, %f, %s\n", _v1, _v2, _v3.c_str());
+  std::printf("sum: %f\n", 3 + _v2);
 
   std::printf("\nMessages\n");
   IM mess = IM ("click") << IV ("x", 100) << IV ("y", 100);
@@ -33,12 +34,19 @@ int main(int argc, char** argv)
   if (~mess == "click") { std::printf("mess == click\n"); }
 
   std::printf("\nCallbacks\n");
-  IC cb(callback); cb(mess);
+  IC cb(handler); cb(mess);
 
   std::printf("\nBuses\n");
   independency::bus bus;
-  bus + callback; bus(mess); // produces one message, registers callback
-  bus - callback; bus(mess); // do not produce message, unregisters callback
+  std::printf("Callback object\n");
+  bus + cb; bus(mess); // produces one message, registers callback
+  bus - cb; bus(mess); // do not produce message, unregisters callback
+  std::printf("Callback object 2\n");
+  bus + IC(handler); bus(mess); // another approach
+  bus - IC(handler); bus(mess);
+  std::printf("Callback function\n");
+  bus + handler; bus(mess); // another approach
+  bus - handler; bus(mess);
 
   std::printf("\nPath'n'storage\n");
   // sample path object
