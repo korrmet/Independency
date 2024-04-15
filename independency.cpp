@@ -31,7 +31,7 @@ int main(int argc, char** argv)
   std::printf("%s: x %d, y %d\n",
               (~mess).c_str(), (int)mess["x"], (int)mess["y"]);
 
-  if (~mess == "click") { std::printf("mess == click\n"); }
+  if (mess == "click") { std::printf("mess == click\n"); }
 
   std::printf("\nCallbacks\n");
   IC cb(handler); cb(mess);

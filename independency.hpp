@@ -58,6 +58,9 @@ struct message
 
   std::string operator ~() { return event; }
 
+  bool operator ==(std::string ev) { return event == ev; }
+  bool operator !=(std::string ev) { return event != ev; }
+
   private:
   std::string event; std::list<value> data; };
 

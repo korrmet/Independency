@@ -25,14 +25,14 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="3.8747265"
-     inkscape:cx="69.03713"
-     inkscape:cy="-0.12904136"
-     inkscape:window-width="1104"
-     inkscape:window-height="631"
-     inkscape:window-x="500"
-     inkscape:window-y="359"
-     inkscape:window-maximized="0"
+     inkscape:zoom="13.811486"
+     inkscape:cx="45.215989"
+     inkscape:cy="26.572086"
+     inkscape:window-width="1920"
+     inkscape:window-height="1034"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
      id="defs2">
@@ -158,7 +158,7 @@
        inkscape:label="Drop Shadow"
        id="filter43"
        x="-0.063626389"
-       y="-0.37095764"
+       y="-0.37095765"
        width="1.1272528"
        height="1.7419153">
       <feFlood
@@ -207,16 +207,10 @@
        d="M 17.783,3.6547 14.55,7.5298 28.969,9.2711 38.886,4.3368 31.026,2.4999 Z"
        id="path1573"
        sodipodi:nodetypes="cccccc" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:WC_AquaBlues_Bta;-inkscape-font-specification:WC_AquaBlues_Bta;fill:#ececec;stroke:#ffffff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.5;filter:url(#filter43)"
-       x="7.3381"
-       y="6.6079001"
-       id="text487-8-7"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:CozetteVector;-inkscape-font-specification:'CozetteVector Medium';fill:#ffffff;stroke:#ffffff;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:0.5"
-         x="7.3381"
-         y="6.6079001"
-         id="tspan489-0-9"
-         sodipodi:role="line">Independency</tspan></text>
+    <path
+       style="font-size:4.23333px;font-family:CozetteVector;-inkscape-font-specification:'CozetteVector Medium';fill:#ffffff;stroke:#ffffff;stroke-width:0.5;stroke-opacity:0.5;filter:url(#filter43)"
+       d="M 8.640345,6.2813054 H 8.9669397 V 6.6079001 H 7.9892225 V 6.2813054 H 8.3158172 V 4.3279379 H 7.9892225 V 4.0034101 H 8.9669397 V 4.3279379 H 8.640345 Z M 9.6180622,6.6079001 V 4.6545326 h 1.3022448 v 0.3245278 h 0.324528 V 6.6079001 H 10.920307 V 4.9790604 H 9.9425899 V 6.6079001 Z M 12.873675,6.2813054 V 4.9790604 H 11.895957 V 4.6545326 h 0.977718 V 3.6768154 h 0.324527 V 6.6079001 H 11.895957 V 6.2813054 Z m -1.302245,0 v -1.302245 h 0.324527 v 1.302245 z m 1.953367,0 v -1.302245 h 0.324528 V 4.6545326 h 0.977717 v 0.3245278 h -0.977717 v 0.3265947 h 0.977717 V 4.9790604 h 0.324528 v 0.6511225 h -1.302245 v 0.6511225 h 0.977717 V 5.9567776 H 15.15157 V 6.2813054 H 14.827042 V 6.6079001 H 13.849325 V 6.2813054 Z m 3.255613,-1.302245 h 0.324527 v 1.302245 H 16.78041 Z m 0,0 h -0.977718 v 1.302245 H 16.78041 V 6.6079001 H 15.802692 V 7.5856174 H 15.478165 V 4.6545326 h 1.302245 z m 0.651122,1.302245 V 4.9790604 H 17.75606 V 4.6545326 h 0.977717 V 4.9790604 H 17.75606 v 0.3265947 h 0.977717 V 4.9790604 h 0.324528 V 5.6301829 H 17.75606 v 0.6511225 h 0.977717 V 5.9567776 h 0.324528 V 6.2813054 H 18.733777 V 6.6079001 H 17.75606 V 6.2813054 Z M 19.3849,6.6079001 V 4.6545326 h 1.302245 v 0.3245278 h 0.324528 V 6.6079001 H 20.687145 V 4.9790604 H 19.709428 V 6.6079001 Z M 22.640512,6.2813054 V 4.9790604 H 21.662795 V 4.6545326 h 0.977717 V 3.6768154 H 22.96504 V 6.6079001 H 21.662795 V 6.2813054 Z m -1.302245,0 v -1.302245 h 0.324528 v 1.302245 z m 1.953368,0 v -1.302245 h 0.324527 V 4.6545326 H 24.59388 V 4.9790604 H 23.616162 V 5.3056551 H 24.59388 V 4.9790604 h 0.324527 V 5.6301829 H 23.616162 V 6.2813054 H 24.59388 V 5.9567776 h 0.324527 V 6.2813054 H 24.59388 V 6.6079001 H 23.616162 V 6.2813054 Z m 1.953367,0.3265947 V 4.6545326 h 1.302245 v 0.3245278 h 0.324527 V 6.6079001 H 26.547247 V 4.9790604 h -0.977718 v 1.6288397 z m 1.953367,-0.3265947 v -1.302245 h 0.324528 V 4.6545326 h 0.977717 v 0.3245278 h 0.324528 V 5.3056551 H 28.500614 V 4.9790604 h -0.977717 v 1.302245 h 0.977717 V 5.9567776 h 0.324528 V 6.2813054 H 28.500614 V 6.6079001 H 27.522897 V 6.2813054 Z m 1.953367,0 V 4.6545326 h 0.324528 v 1.6267728 h 0.977717 V 4.6545326 h 0.324528 v 2.60449 H 30.453981 V 7.5856174 H 29.476264 V 7.2590226 h 0.977717 V 6.6079001 H 29.476264 V 6.2813054 Z"
+       id="text487-8-7"
+       aria-label="Independency" />
   </g>
 </svg>
