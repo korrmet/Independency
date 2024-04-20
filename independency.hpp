@@ -29,11 +29,50 @@ struct value
   value& operator =(int v)
   { type = "int"; data = std::to_string(v); return *this;}
 
+  value& operator +=(int v)
+  { if (type == "int") { data = std::to_string(std::stoi(data) + v); }
+    return *this; }
+  
+  value& operator -=(int v)
+  { if (type == "int") { data = std::to_string(std::stoi(data) - v); }
+    return *this; }
+  
+  value& operator *=(int v)
+  { if (type == "int") { data = std::to_string(std::stoi(data) * v); }
+    return *this; }
+  
+  value& operator /=(int v)
+  { if (type == "int") { data = std::to_string(std::stoi(data) / v); }
+    return *this; }
+
+  value& operator %=(int v)
+  { if (type == "int") { data = std::to_string(std::stoi(data) % v); }
+    return *this; }
+
   value& operator =(float v)
   { type = "float"; data = std::to_string(v); return *this; }
 
+  value& operator +=(float v)
+  { if (type == "float") { data = std::to_string(std::stof(data) + v); }
+    return *this; }
+
+  value& operator -=(float v)
+  { if (type == "float") { data = std::to_string(std::stof(data) - v); }
+    return *this; }
+
+  value& operator *=(float v)
+  { if (type == "float") { data = std::to_string(std::stof(data) * v); }
+    return *this; }
+
+  value& operator /=(float v)
+  { if (type == "float") { data = std::to_string(std::stof(data) / v); }
+    return *this; }
+
   value& operator =(std::string v)
   { type = "string"; data = v; return *this; }
+
+  value& operator +=(std::string v)
+  { if (type == "string") { data += v; } return *this; }
 
   bool operator ==(value const& v)
   { return v.name == name && v.type == type && v.data == data; }
