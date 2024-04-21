@@ -83,6 +83,8 @@ int main(int argc, char** argv)
   std::printf("check inexistent double NOT: %s\n",
               !!storage(root / "fff") ? "true" : "false");
 
+  storage.del(root/"bax");
+
   std::string sample = storage.serialize();
   std::printf("direct serialize:\n%s", sample.c_str());
   storage.parse(sample);

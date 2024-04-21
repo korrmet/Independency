@@ -29,6 +29,10 @@ struct value
   value& operator =(int v)
   { type = "int"; data = std::to_string(v); return *this;}
 
+  bool operator ==(int v)
+  { if (type != "int") { return false; }
+    return v == std::stoi(data); }
+
   value& operator +=(int v)
   { if (type == "int") { data = std::to_string(std::stoi(data) + v); }
     return *this; }
@@ -52,6 +56,10 @@ struct value
   value& operator =(float v)
   { type = "float"; data = std::to_string(v); return *this; }
 
+  bool operator ==(float v)
+  { if (type != "float") { return false; }
+    return v == std::stof(data); }
+
   value& operator +=(float v)
   { if (type == "float") { data = std::to_string(std::stof(data) + v); }
     return *this; }
@@ -70,6 +78,10 @@ struct value
 
   value& operator =(std::string v)
   { type = "string"; data = v; return *this; }
+
+  bool operator ==(std::string v)
+  { if (type != "string") { return false; }
+    return v == data; }
 
   value& operator +=(std::string v)
   { if (type == "string") { data += v; } return *this; }
@@ -214,7 +226,7 @@ class storage
     
     bool found = false;
     for (item& child : current->childs)
-    { if (child.val.name == target) { found = true; } break; }
+    { if (child.val.name == target) { found = true; break; } }
     if (!found) { return false; }
 
     current->childs.remove_if([&target](item& i)
