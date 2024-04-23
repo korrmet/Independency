@@ -90,4 +90,9 @@ int main(int argc, char** argv)
   storage.parse(sample);
   std::printf("reverse:\n%s", storage.serialize().c_str());
 
+  std::printf("\nmove:\n");
+  independency::storage s2;
+  storage.mv(root/"foo", root/"a"/"b"/"c", &s2);
+  std::printf("%s\n%s\n", storage.serialize().c_str(), s2.serialize().c_str());
+
   return 0; }

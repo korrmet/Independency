@@ -213,6 +213,36 @@ class storage
     std::list<std::string> ret;
     for (item& child : current->childs) { ret.push_back(child.val.name); }
     return ret; }
+
+  bool cp(path src, path dst, storage* sdst = nullptr)
+  { if (!sdst) { sdst = this; }
+    
+    item* _src = &root;
+    for (std::string node : src.nodes)
+    { item* next = nullptr;
+      for (item& child : _src->childs)
+      { if (child.val.name == node) { next = &child; break; } }
+      if (!next) { return false; }
+      _src = next; }
+
+    item* _dst = &sdst->root;
+    for (std::string node : dst.nodes)
+    { item* next = nullptr;
+      for (item& child : _dst->childs)
+      { if (child.val.name == node) { next = &child; break; } }
+      if (!next) { return false; }
+      _dst = next; }
+
+    _dst->childs = _src->childs;
+
+    return true; }
+
+  bool mv(path src, path dst, storage* sdst = nullptr)
+  { if (!sdst) { sdst = this; }
+    (*sdst)[dst];
+    if (!cp(src, dst, sdst)) { return false; }
+    if (!del(src)) { return false; }
+    return true; }
   
   bool del(path p)
   { item* current = &root;
