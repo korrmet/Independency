@@ -14,6 +14,20 @@ void handler(void* ctx, IM mess)
 int main(int argc, char** argv)
 { std::printf("Independency library demo\n");
 
+  std::printf("\nCLI Parser\n");
+
+  independency::cli_parser parser(argc, argv);
+
+  if (!parser.count("--flag")) { std::printf("specify flag\n"); }
+  if (!parser.count("--int")) { std::printf("specify int\n"); }
+  if (!parser.count("--float")) { std::printf("specify float\n"); }
+  if (!parser.count("--string")) { std::printf("specify string\n"); }
+
+  std::printf("flag: %d\n", (parser.count("--flag") ? 1 : 0));
+  std::printf("int: %d\n", (int)parser["--int"]);
+  std::printf("float: %f\n", (float)parser["--float"]);
+  std::printf("string: %s\n", ((std::string)parser["--string"]).c_str());
+
   std::printf("\nValues\n");
 
   IV v1("Integer", 1);

@@ -332,6 +332,77 @@ class storage
   value empty;
 };
 
+class cli_value
+{ public:
+  cli_value(std::string data) : data(data) { }
+
+  operator int() { return to_int(data); }
+  operator float() { return to_float(data); }
+  operator std::string() { return data; }
+
+  bool operator == (int v) { return v == to_int(data); }
+  bool operator == (float v) { return v == std::stof(data); }
+  bool operator == (std::string v) { return v == data; }
+
+  bool operator != (int v) { return v != to_int(data); }
+  bool operator != (float v) { return v != std::stof(data); }
+  bool operator != (std::string v) { return v == data; }
+
+  bool operator > (int v) { return v > to_int(data); }
+  bool operator > (float v) { return v > std::stof(data); }
+
+  bool operator < (int v) { return v < to_int(data); }
+  bool operator < (float v) { return v < std::stof(data); }
+
+  bool operator >= (int v) { return v >= to_int(data); }
+  bool operator >= (float v) { return v >= std::stof(data); }
+
+  bool operator <= (int v) { return v <= to_int(data);  }
+  bool operator <= (float v) { return v <= std::stof(data); }
+
+  private:
+  int to_int(std::string v)
+  { try { return std::stoi(v); } catch (...) { return 0; } }
+
+  float to_float(std::string v)
+  { try { return std::stof(v); } catch (...) { return 0; } }
+
+  friend class cli_parser;
+  std::string data;
+};
+
+class cli_parser
+{ public:
+  cli_parser(int argc, char** argv)
+  { kv current; bool expect_val = false;
+
+    for (unsigned int i = 1; i < argc; i++)
+    { if (argv[i][0] == '-' && argv[i][1])
+      { if (expect_val) { args.push_back(current); }
+        current.clear(); current.key = argv[i]; expect_val = true;
+        continue; }
+
+      if (expect_val)
+      { current.val = argv[i]; expect_val = false; args.push_back(current);
+        continue; } }
+  
+    if (!current.key.empty()) { args.push_back(current); } }
+
+  bool count(std::string key)
+  { for (kv& arg : args) { if (arg.key == key) { return true; } }
+    return false; }
+
+  cli_value operator[](std::string key)
+  { for (kv& arg : args) { if (arg.key == key) { return cli_value(arg.val); } }
+    return cli_value(""); }
+
+  private:
+  struct kv { std::string key; std::string val;
+              void clear() { key.clear(); val.clear(); } };
+
+  std::list<kv> args;
+};
+
 } // independency
 
 #endif // INDEPENDENCY_HPP
