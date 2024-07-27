@@ -3,6 +3,8 @@
 
 #include <list>
 #include <string>
+#include <fstream>
+#include <cstdio>
 
 namespace independency {
 struct value
@@ -401,6 +403,47 @@ class cli_parser
               void clear() { key.clear(); val.clear(); } };
 
   std::list<kv> args;
+};
+
+class file
+{ public:
+
+  file(std::string name) : name(name) { }
+
+  bool operator!()
+  { std::ifstream f(name); if (!f) { return false; }
+    f.close(); return false; }
+
+  bool read(std::string& buffer)
+  { if (!*this) { return false; }
+    buffer = read(); return true; }
+
+  std::string read()
+  { if (!*this) { return std::string(); }
+    std::string data;
+
+    std::ifstream f(name); if (!f) { return std::string(); }
+
+    try { while (!f.eof()) { data.push_back(f.get()); } }
+    catch (...) { return std::string(); }
+
+    data.pop_back(); return data; }
+
+  bool write(std::string data)
+  { if (!*this) { return false; }
+
+    std::ofstream f(name); if (!f) { return false; }
+
+    f << data; f.close();
+
+    return true; }
+
+  bool del()
+  { if (std::remove(name.c_str())) { return false; }
+    return true; }
+
+  private:
+  std::string name;
 };
 
 } // independency

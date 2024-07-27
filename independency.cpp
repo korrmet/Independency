@@ -14,6 +14,15 @@ void handler(void* ctx, IM mess)
 int main(int argc, char** argv)
 { std::printf("Independency library demo\n");
 
+  std::printf("\nFile operations\n");
+
+  independency::file foo("foo.txt");
+  foo.write("Hello, world!");
+  if (foo.read() == "Hello, world!")
+  { std::printf("File written and readen succesfully\n"); }
+
+  foo.del();
+
   std::printf("\nCLI Parser\n");
 
   independency::cli_parser parser(argc, argv);
