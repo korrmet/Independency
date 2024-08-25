@@ -411,7 +411,7 @@ class file
   file(std::string name) : name(name) { }
 
   bool operator!()
-  { std::ifstream f(name); if (!f) { return false; }
+  { std::ifstream f(name); if (!f) { return true; }
     f.close(); return false; }
 
   bool read(std::string& buffer)
