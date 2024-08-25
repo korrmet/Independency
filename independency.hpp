@@ -430,12 +430,8 @@ class file
     data.pop_back(); return data; }
 
   bool write(std::string data)
-  { if (!*this) { return false; }
-
-    std::ofstream f(name); if (!f) { return false; }
-
+  { std::ofstream f(name); if (!f) { return false; }
     f << data; f.close();
-
     return true; }
 
   bool del()
